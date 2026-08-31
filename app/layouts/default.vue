@@ -53,7 +53,7 @@ function onSearch() {
         </div>
 
         <!-- Cart — UButton + UChip -->
-        <UChip :show="cartCount > 0" :text="cartCount > 99 ? '99+' : String(cartCount)" size="lg" inset>
+        <UChip :show="cartCount > 0" :text="cartCount > 99 ? '99+' : String(cartCount)" color="info" class="ring-none" size="3xl">
           <UButton icon="i-lucide-shopping-cart" variant="ghost" size="lg" class="text-white hover:bg-white/10 hover:text-white" aria-label="ตะกร้า" @click="cartDrawer = true" />
         </UChip>
       </UContainer>
