@@ -7,7 +7,7 @@ const route = useRoute()
 const orderNo = route.params.orderNo as string
 const { data: order, error } = await useFetch(`/api/orders/${orderNo}`)
 
-if (error.value) throw createError({ statusCode: 404, statusMessage: 'Order not found' })
+if (error.value) throw createError({ statusCode: 404, statusMessage: 'ไม่พบคำสั่งซื้อ' })
 
 const statusColor: Record<string, 'warning' | 'success' | 'info' | 'error' | 'neutral'> = {
   pending: 'warning',

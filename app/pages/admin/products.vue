@@ -19,9 +19,9 @@ const form = reactive({
 })
 
 const categories = [
-  { label: 'Apparel', value: 'apparel' },
-  { label: 'Accessories', value: 'accessories' },
-  { label: 'Home', value: 'home' }
+  { label: 'เสื้อผ้า', value: 'apparel' },
+  { label: 'กระเป๋า & เครื่องประดับ', value: 'accessories' },
+  { label: 'ของใช้ในบ้าน', value: 'home' }
 ]
 
 function openCreate() {
@@ -64,137 +64,68 @@ function formatPrice(s: number) { return new Intl.NumberFormat('th-TH', { style:
 <template>
   <UDashboardPanel>
     <template #header>
-      <UDashboardNavbar title="Products">
+      <UDashboardNavbar title="สินค้า">
         <template #right>
-          <UButton
-            icon="i-lucide-plus"
-            @click="openCreate"
-          >
-            เพิ่มสินค้า
-          </UButton>
+          <UButton icon="i-lucide-plus" @click="openCreate">เพิ่มสินค้า</UButton>
         </template>
       </UDashboardNavbar>
     </template>
     <template #body>
       <div class="p-4">
-        <UTable
-          :data="data?.products || []"
-          :columns="[
-            { accessorKey: 'name', header: 'ชื่อ' },
-            { accessorKey: 'price', header: 'ราคา' },
-            { accessorKey: 'stock', header: 'สต็อก' },
-            { accessorKey: 'slug', header: 'Slug' },
-            { id: 'actions', header: '' }
-          ]"
-        >
-          <template #price-cell="{ row }">
-            {{ formatPrice(row.original.price) }}
-          </template>
+        <UTable :data="data?.products || []" :columns="[
+          { accessorKey: 'name', header: 'ชื่อ' },
+          { accessorKey: 'price', header: 'ราคา' },
+          { accessorKey: 'stock', header: 'สต็อก' },
+          { accessorKey: 'slug', header: 'Slug' },
+          { id: 'actions', header: '' }
+        ]">
+          <template #price-cell="{ row }">{{ formatPrice(row.original.price) }}</template>
           <template #actions-cell="{ row }">
             <div class="flex gap-1">
-              <UButton
-                size="xs"
-                variant="ghost"
-                icon="i-lucide-pencil"
-                @click="openEdit(row.original)"
-              />
-              <UButton
-                size="xs"
-                variant="ghost"
-                color="error"
-                icon="i-lucide-trash"
-                @click="onDelete(row.original)"
-              />
+              <UButton size="xs" variant="ghost" icon="i-lucide-pencil" @click="openEdit(row.original)" />
+              <UButton size="xs" variant="ghost" color="error" icon="i-lucide-trash" @click="onDelete(row.original)" />
             </div>
           </template>
         </UTable>
       </div>
 
-      <UModal
-        v-model:open="showModal"
-        :title="editing ? 'แก้ไขสินค้า' : 'เพิ่มสินค้า'"
-      >
+      <UModal v-model:open="showModal" :title="editing ? 'แก้ไขสินค้า' : 'เพิ่มสินค้า'">
         <template #body>
           <div class="space-y-3">
-            <UFormField
-              label="Slug"
-              required
-            >
-              <UInput
-                v-model="form.slug"
-                placeholder="my-product"
-                class="w-full"
-              />
+            <UFormField label="Slug" required>
+              <UInput v-model="form.slug" placeholder="my-product" class="w-full" />
             </UFormField>
-            <UFormField
-              label="ชื่อ"
-              required
-            >
-              <UInput
-                v-model="form.name"
-                class="w-full"
-              />
+            <UFormField label="ชื่อ" required>
+              <UInput v-model="form.name" class="w-full" />
             </UFormField>
             <UFormField label="รายละเอียด">
-              <UTextarea
-                v-model="form.description"
-                :rows="2"
-                class="w-full"
-              />
+              <UTextarea v-model="form.description" :rows="2" class="w-full" />
             </UFormField>
             <div class="grid grid-cols-2 gap-3">
               <UFormField label="ราคา (สตางค์)">
-                <UInput
-                  v-model.number="form.price"
-                  type="number"
-                  class="w-full"
-                />
+                <UInput v-model.number="form.price" type="number" class="w-full" />
               </UFormField>
               <UFormField label="ราคาเต็ม">
-                <UInput
-                  v-model.number="form.compareAtPrice"
-                  type="number"
-                  class="w-full"
-                />
+                <UInput v-model.number="form.compareAtPrice" type="number" class="w-full" />
               </UFormField>
             </div>
             <div class="grid grid-cols-2 gap-3">
               <UFormField label="สต็อก">
-                <UInput
-                  v-model.number="form.stock"
-                  type="number"
-                  class="w-full"
-                />
+                <UInput v-model.number="form.stock" type="number" class="w-full" />
               </UFormField>
               <UFormField label="หมวด">
-                <USelect
-                  v-model="form.categorySlug"
-                  :items="categories"
-                  value-key="value"
-                  class="w-full"
-                />
+                <USelect v-model="form.categorySlug" :items="categories" value-key="value" class="w-full" />
               </UFormField>
             </div>
             <UFormField label="รูป (URL)">
-              <UInput
-                v-model="form.images[0]"
-                placeholder="https://..."
-                class="w-full"
-              />
+              <UInput v-model="form.images[0]" placeholder="https://..." class="w-full" />
             </UFormField>
           </div>
         </template>
         <template #footer>
           <div class="flex justify-end gap-2">
-            <UButton
-              variant="ghost"
-              @click="showModal = false"
-            >
-              ยกเลิก
-            </UButton>
-            <UButton @click="onSubmit">
-              {{ editing ? 'บันทึก' : 'เพิ่ม' }}
-            </UButton>
+            <UButton variant="ghost" @click="showModal = false">ยกเลิก</UButton>
+            <UButton @click="onSubmit">{{ editing ? 'บันทึก' : 'เพิ่ม' }}</UButton>
           </div>
         </template>
       </UModal>

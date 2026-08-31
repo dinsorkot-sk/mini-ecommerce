@@ -22,7 +22,7 @@ async function onLogin() {
     <UCard class="w-full max-w-sm">
       <template #header>
         <h1 class="font-bold text-center">
-          Admin Login
+          เข้าสู่ระบบจัดการ
         </h1>
         <p class="text-sm text-muted text-center">
           ใส่รหัสผ่านผู้ดูแล (ตั้งใน NUXT_ADMIN_PASSWORD)

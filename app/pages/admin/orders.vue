@@ -7,11 +7,11 @@ const toast = useToast()
 function formatPrice(s: number) { return new Intl.NumberFormat('th-TH', { style: 'currency', currency: 'THB' }).format(s / 100) }
 
 const statusOptions = [
-  { label: 'Pending', value: 'pending' },
-  { label: 'Paid', value: 'paid' },
-  { label: 'Shipped', value: 'shipped' },
-  { label: 'Completed', value: 'completed' },
-  { label: 'Cancelled', value: 'cancelled' }
+  { label: 'รอดำเนินการ', value: 'pending' },
+  { label: 'ชำระแล้ว', value: 'paid' },
+  { label: 'จัดส่งแล้ว', value: 'shipped' },
+  { label: 'เสร็จสิ้น', value: 'completed' },
+  { label: 'ยกเลิก', value: 'cancelled' }
 ]
 
 async function updateStatus(order: any, status: string) {
@@ -28,46 +28,27 @@ async function updateStatus(order: any, status: string) {
 <template>
   <UDashboardPanel>
     <template #header>
-      <UDashboardNavbar title="Orders" />
+      <UDashboardNavbar title="คำสั่งซื้อ" />
     </template>
     <template #body>
       <div class="p-4">
-        <UTable
-          :data="data?.orders || []"
-          :columns="[
-            { accessorKey: 'orderNo', header: 'เลขที่' },
-            { accessorKey: 'customerName', header: 'ลูกค้า' },
-            { accessorKey: 'total', header: 'ยอดรวม' },
-            { accessorKey: 'status', header: 'สถานะ' },
-            { accessorKey: 'createdAt', header: 'วันที่' },
-            { id: 'actions', header: '' }
-          ]"
-        >
-          <template #total-cell="{ row }">
-            {{ formatPrice(row.original.total) }}
-          </template>
+        <UTable :data="data?.orders || []" :columns="[
+          { accessorKey: 'orderNo', header: 'เลขที่' },
+          { accessorKey: 'customerName', header: 'ลูกค้า' },
+          { accessorKey: 'total', header: 'ยอดรวม' },
+          { accessorKey: 'status', header: 'สถานะ' },
+          { accessorKey: 'createdAt', header: 'วันที่' },
+          { id: 'actions', header: '' }
+        ]">
+          <template #total-cell="{ row }">{{ formatPrice(row.original.total) }}</template>
           <template #status-cell="{ row }">
-            <UBadge
-              :label="row.original.status"
-              variant="soft"
-            />
+            <UBadge :label="row.original.status" variant="soft" />
           </template>
           <template #actions-cell="{ row }">
-            <USelect
-              :model-value="row.original.status"
-              :items="statusOptions"
-              value-key="value"
-              size="xs"
-              @update:model-value="updateStatus(row.original, $event)"
-            />
+            <USelect :model-value="row.original.status" :items="statusOptions" value-key="value" size="xs" @update:model-value="updateStatus(row.original, $event)" />
           </template>
         </UTable>
-        <p
-          v-if="!data?.orders?.length"
-          class="text-center text-muted py-8"
-        >
-          ยังไม่มีคำสั่งซื้อ
-        </p>
+        <p v-if="!data?.orders?.length" class="text-center text-muted py-8">ยังไม่มีคำสั่งซื้อ</p>
       </div>
     </template>
   </UDashboardPanel>

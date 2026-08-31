@@ -8,11 +8,11 @@ const slug = route.params.slug as string
 const { data: product, error } = await useFetch(`/api/products/${slug}`)
 
 if (error.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Product not found' })
+  throw createError({ statusCode: 404, statusMessage: 'ไม่พบสินค้า' })
 }
 
 useSeoMeta({
-  title: () => product.value ? `${product.value.name} — Mini Shop` : 'Product',
+  title: () => product.value ? `${product.value.name} — Mini Shop` : 'สินค้า',
   description: () => product.value?.description || ''
 })
 

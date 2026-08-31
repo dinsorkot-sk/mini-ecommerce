@@ -5,26 +5,26 @@ const open = ref(false)
 
 const links: NavigationMenuItem[][] = [[
   {
-    label: 'Dashboard',
+    label: 'แดชบอร์ด',
     icon: 'i-lucide-layout-dashboard',
     to: '/admin',
     onSelect: () => { open.value = false }
   },
   {
-    label: 'Products',
+    label: 'สินค้า',
     icon: 'i-lucide-package',
     to: '/admin/products',
     onSelect: () => { open.value = false }
   },
   {
-    label: 'Orders',
+    label: 'คำสั่งซื้อ',
     icon: 'i-lucide-receipt',
     to: '/admin/orders',
     onSelect: () => { open.value = false }
   }
 ], [
   {
-    label: 'Back to Shop',
+    label: 'กลับหน้าร้าน',
     icon: 'i-lucide-store',
     to: '/',
     onSelect: () => { open.value = false }
@@ -44,42 +44,19 @@ const links: NavigationMenuItem[][] = [[
     >
       <template #header="{ collapsed }">
         <div class="flex items-center gap-2 px-2 py-1">
-          <UIcon
-            name="i-lucide-store"
-            class="size-6 text-primary shrink-0"
-          />
-          <span
-            v-if="!collapsed"
-            class="font-bold truncate"
-          >Mini Shop Admin</span>
+          <UIcon name="i-lucide-store" class="size-6 text-primary shrink-0" />
+          <span v-if="!collapsed" class="font-bold truncate">จัดการร้าน</span>
         </div>
       </template>
 
       <template #default="{ collapsed }">
-        <UNavigationMenu
-          :collapsed="collapsed"
-          :items="links[0]"
-          orientation="vertical"
-          tooltip
-        />
-        <UNavigationMenu
-          :collapsed="collapsed"
-          :items="links[1]"
-          orientation="vertical"
-          tooltip
-          class="mt-auto"
-        />
+        <UNavigationMenu :collapsed="collapsed" :items="links[0]" orientation="vertical" tooltip />
+        <UNavigationMenu :collapsed="collapsed" :items="links[1]" orientation="vertical" tooltip class="mt-auto" />
       </template>
 
       <template #footer="{ collapsed }">
-        <UButton
-          icon="i-lucide-log-out"
-          variant="ghost"
-          color="neutral"
-          :block="!collapsed"
-          @click="navigateTo('/admin/login')"
-        >
-          <span v-if="!collapsed">Logout</span>
+        <UButton icon="i-lucide-log-out" variant="ghost" color="neutral" :block="!collapsed" @click="navigateTo('/admin/login')">
+          <span v-if="!collapsed">ออกจากระบบ</span>
         </UButton>
       </template>
     </UDashboardSidebar>
