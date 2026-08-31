@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "Mini Shop",
+    "subtitle": "Easy shop — Shopee style"
+  },
+  "nav": {
+    "cart": "Cart",
+    "searchPlaceholder": "Search products, brands or categories",
+    "allProducts": "All Products",
+    "categories": "Categories"
+  },
+  "product": {
+    "addToCart": "Add to cart",
+    "outOfStock": "Out of stock",
+    "inStock": "{n} in stock",
+    "price": "Price"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Cart is empty",
+    "goShop": "Go shopping",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "total": "Total",
+    "checkout": "Checkout"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "customerName": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Shipping address",
+    "paymentMethod": "Payment method",
+    "cod": "Cash on delivery (COD)",
+    "transfer": "Bank transfer",
+    "confirm": "Place order",
+    "emptyCart": "Cart is empty — go shopping first"
+  }
+}

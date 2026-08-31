@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "Mini Shop",
+    "subtitle": "ช้อปง่าย ส่งไว — สไตล์ Shopee"
+  },
+  "nav": {
+    "cart": "ตะกร้า",
+    "searchPlaceholder": "ค้นหาสินค้า แบรนด์ หรือหมวดหมู่",
+    "allProducts": "สินค้าทั้งหมด",
+    "categories": "หมวดหมู่"
+  },
+  "product": {
+    "addToCart": "เพิ่มลงตะกร้า",
+    "outOfStock": "สินค้าหมด",
+    "inStock": "มีสินค้า {n} ชิ้น",
+    "price": "ราคา"
+  },
+  "cart": {
+    "title": "ตะกร้าสินค้า",
+    "empty": "ตะกร้าว่าง",
+    "goShop": "ไปเลือกสินค้า",
+    "subtotal": "ยอดรวม",
+    "shipping": "ค่าจัดส่ง",
+    "total": "รวมทั้งหมด",
+    "checkout": "ไปชำระเงิน"
+  },
+  "checkout": {
+    "title": "ชำระเงิน",
+    "customerName": "ชื่อ-นามสกุล",
+    "email": "อีเมล",
+    "phone": "เบอร์โทร",
+    "address": "ที่อยู่จัดส่ง",
+    "paymentMethod": "วิธีชำระเงิน",
+    "cod": "เก็บเงินปลายทาง (COD)",
+    "transfer": "โอนชำระ",
+    "confirm": "ยืนยันสั่งซื้อ",
+    "emptyCart": "ตะกร้าว่าง — ไปเลือกสินค้าก่อน"
+  }
+}

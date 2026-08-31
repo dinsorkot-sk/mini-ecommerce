@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+  --font-sans: 'Public Sans', 'Noto Sans Thai', sans-serif;
+
+  /* Shopee orange — map to both orange and primary for Nuxt UI */
+  --color-orange-50: #fff5f0;
+  --color-orange-100: #ffe6db;
+  --color-orange-200: #ffccc2;
+  --color-orange-300: #ffa07a;
+  --color-orange-400: #ff6b4a;
+  --color-orange-500: #ee4d2d;
+  --color-orange-600: #d73211;
+  --color-orange-700: #b5260c;
+  --color-orange-800: #8f1d09;
+  --color-orange-900: #6b1507;
+  --color-orange-950: #4a0e05;
+
+  /* keep green for success */
+  --color-green-50: #EFFDF5;
+  --color-green-100: #D9FBE8;
+  --color-green-200: #B3F5D1;
+  --color-green-300: #75EDAE;
+  --color-green-400: #00DC82;
+  --color-green-500: #00C16A;
+  --color-green-600: #00A155;
+  --color-green-700: #007F45;
+  --color-green-800: #016538;
+  --color-green-900: #0A5331;
+  --color-green-950: #052E16;
+}
+
+:root { color-scheme: light; }
+html { color-scheme: light; }
