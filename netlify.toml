@@ -1,6 +1,6 @@
 # Netlify deploy config for Mini E-Commerce (Nuxt 4 + Nitro + NuxtHub + Turso)
 [build]
-  command = "pnpm build:netlify && node scripts/fix-symlinks.mjs"
+  command = "node scripts/ensure-libsql-linux.mjs && pnpm build:netlify && node scripts/fix-symlinks.mjs"
   publish = "dist"
 
 [build.environment]
