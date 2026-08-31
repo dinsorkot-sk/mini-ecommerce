@@ -1,7 +1,7 @@
 # Netlify deploy config for Mini E-Commerce (Nuxt 4 + Nitro + NuxtHub + Turso)
 [build]
   command = "pnpm build:netlify && node scripts/fix-symlinks.mjs"
-  publish = ".output/public"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "24"
